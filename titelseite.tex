@@ -1,0 +1,58 @@
+\newcommand{\diameter}{20}
+\newcommand{\xone}{-55}
+\newcommand{\xtwo}{450}
+\newcommand{\yone}{75}
+\newcommand{\ytwo}{-685}
+
+\newcommand{\timestart}{24. Mai 2013}
+\newcommand{\timeend}{23. September 2013}
+
+\begin{titlepage}
+  \begin{tikzpicture}[overlay]
+    \draw[color=gray] (\xone pt, \yone pt) -- (\xtwo pt, \yone pt)
+    arc (90:0:\diameter pt) -- (\xtwo pt + \diameter pt , \ytwo pt) -- (\xone pt + \diameter pt , \ytwo pt)
+    arc (270:180:\diameter pt)  -- (\xone pt, \yone pt);
+  \end{tikzpicture}
+
+  \begin{textblock}{10}[0, 0](1.75, 1.125)
+    \includegraphics[width=.3\textwidth]{bilder/Kitlogo_de_rgb.pdf}
+  \end{textblock}
+
+  \changefont{phv}{m}{n}	% helvetica
+  \vspace*{3.5cm}
+  \begin{center}
+    \huge{\mytitle}\\
+    \vspace*{2cm}
+    \large{Bachelorarbeit\\von}\\
+    \vspace*{1cm}
+    \LARGE{\myname}\\
+    \vspace*{1cm}
+    \large{An der Fakultät für Informatik\\Institut für Anthropomatik\\Lehrstuhl Prof. Dr.-Ing. R. Dillmann}
+  \end{center}
+
+  \vspace*{1cm}
+  \large{
+    \begin{center}
+      \begin{tabular}[ht]{l c l}
+        % Gutachter sind die Professoren, die die Arbeit bewerten. 
+        Erstgutachter: & \hfill  & Prof. Dr.-Ing. R. Dillmann\\
+        Zweitgutachter: & \hfill  & Prof. Dr.-Ing. J. Beyerer\\
+        Betreuender Mitarbeiter: & \hfill  & Dipl.-Inform. Pascal Meißner\\
+      \end{tabular}
+    \end{center}
+  }
+
+  \begin{textblock}{10}[0, 0](3, 14)
+    \begin{center}
+      Bearbeitungszeit: \timestart \hspace*{0.25cm} -- \hspace*{0.25cm} \timeend
+    \end{center}
+  \end{textblock}
+
+  \begin{textblock}{10}[0, 0](2, 15.365)
+    \tiny{KIT -- Universität des Landes Baden-Württemberg und nationales Forschungszentrum der Helmholtz-Gesellschaft}
+  \end{textblock}
+
+  \begin{textblock}{10}[0, 0](12.3, 15.36)
+    \small\textbf{www.kit.edu}
+  \end{textblock}
+\end{titlepage}

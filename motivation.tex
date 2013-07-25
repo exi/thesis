@@ -1,0 +1,40 @@
+\chapter{Motivation}\label{ch:motivation}
+
+\section{Anforderungen}
+Um intelligente Robotersysteme entwickeln zu können ist die bloße Erkennung einzelner Objekte und das Bereitstellen von Manipulationsmöglichkeiten nicht ausreichend.
+Für komplizierte kontextbezogene Aktionen und Reaktionen ist ein Verständnis der Umgebung und der  Zusammenhänge innerhalb der Beobachteten Szenarien notwendig.
+Zu diesem Zweck muss es möglich sein aus beobachteten Einzelobjekten und ihren Dynamiken einen Kontext zu extrahieren, welcher eine erweiterte Entscheidungsfindung möglich macht.
+
+Das Ziel dieser Arbeit ist es, ein System zu entwickeln, welches aus einer Menge an beobachteten Objekten über einen langen Zeitraum hinweg ein Modell der inhärenten Dynamiken der beobachteten Szene und der in ihr enthaltenen Objekte generiert, mit dem es möglich ist, ähnliche Objektkonstellationen zu späteren Zeitpunkten wiederzuerkennen.
+Des Weiteren soll das entwickelte System unabhängig von der Domäne der Robotik und somit für Geometrieabstraktion und Erkennung auf Basis von Positionen und Konstellationen punktförmiger Objekte geeignet sein.
+Um diese Voraussetzungen erfüllen zu können muss das Format der Eingabedaten, unabhängig von dem konkreten Modus der Erkennung, auf einem abstrakten Format beruhen.
+
+Um eine aussagekräftige Repräsentation der Realität zu gewährleisten ist eine Beschreibung der beteiligten Objekte in sechs Dimensionen notwendig.
+Diese umfassen die drei Raumdimensionen kombiniert mit den möglichen Orientierungen der Objekte und Szenen.
+Darauf aufbauend sollen auch Szenenbeschreibende dynamische Zusammenhänge erlernbar sein, zum Beispiel räumliche Beziehungen wie "`A steht immer rechts von B"'.
+
+Da das System zukünftig in mehrere unabhängige Komponenten integriert werden soll, ist eine Implementierung in der Programmiersprache C++ notwendig, um eine leichte Interoperabilität mit den bestehenden Teilen des auf dem Robot Operating System (ROS) basierenden Systems zu ermöglichen.
+
+Wichtig für den Einsatz in Echtweltszenarien ist ebenfalls die Geschwindigkeit, mit welcher ein Modell eine Szene mittels einer gegebenen Menge an Eingabeobjekten wiedererkennen kann, um keine unnötigen Verzögerungen im Bewegungs- und Aktionsplanungsablauf der Roboters zu erzeugen.
+
+\section{Aufgabenstellungen}
+
+Aus kontinuierlich eintreffenden Positionen erkannter Objekte soll im Rahmen des Programmierens durch Vormachen über einen längeren Zeitraum ein möglichst vollständiges Szenenmodell erlernt werden.
+Dieses soll es ermöglichen nicht nur die einzelnen Objekte in einer starren Konstellation wiederzuerkennen, sondern darüber hinaus in der Lage sein spezifische Dynamiken innerhalb der Szene und zwischen einzelnen Objekten abzubilden.
+Um die Machbarkeit zu demonstrieren wird eine Heuristik für das Erkennen von Beziehungen des Typs "`A zeigt immer mit der gleichen Seite zu B"' erstellt, jedoch soll es sehr einfach sein das System um neue Heuristiken zu erweitern.
+Anhand der Heuristiken und innerhalb einer Szene erkannten Beziehungen sollen automatisch Hierarchiebäume aufgebaut werden, um Abhängigkeiten und verschachtelte Beziehungen zwischen Objekten zu berücksichtigen.
+
+Es soll möglich sein die Software in das bestehenden System aus dem Robot Operating System\betterfootcite{quigley2009ros}, einer texturbasierter Objekterkennung\betterfootcite{Azad:2009:CHI:1732643.1732747}, einer Markererkennung\betterfootcite{abawi2004accuracy} und einer formenbasierten Objekterkennung\betterfootcite{conf/iros/AzadAD09} zu integrieren und die Informationen der genannten Objekterkenner zu benutzen um ein einheitliches Szenenemodell, unabhängig vom Modus der Erkennung, zu erlernen.
+Das Design soll jedoch grundsätzlich unabhängig vom Robot Operating System und den genannten Erkennern sein, um eine einfache Wiederverwendung in anderen Anwendungsbreichen sicherzustellen.
+
+\section{Einschränkungen}
+
+Nicht gefordert ist die Fähigkeit das Modell in einem Online-Verfahren zu trainieren.
+Das heißt, es wird akzeptiert, dass nach der Aufnahme von Trainingsdaten eine längere Lernphase nötig ist.
+
+Des Weiteren sollen nicht automatisch neue Formen dynamischer Zusammenhänge erkannt und abstrahiert werden können.
+Alle erkannten Abstraktionsformen ("`A zeigt B immer die gleiche Seite"'/"`A bewegt sich immer zusammen mit B"') müssen in Form von händisch programmierten Heuristiken angewandt werden.
+Der Rahmen dieser Arbeit beschränkt sich auf die Erkennung einfacher richtungsbezogener Abhängigkeiten, welche in Hierarchien vorkommen können.
+Somit sind Verkettungen von dynamischen Beziehungen explizit möglich und werden automatisch generiert.
+
+Ebenfalls soll das System nicht selbstständig in der Lage sein unterschiedliche Szenen in Trainingsdaten erkennen zu können. Es wird vorausgesetzt, dass die Lerndaten mit entsprechenden Szenenidentifikationen versehen(gelabelt) sind, welche später wiedererkannt werden müssen.

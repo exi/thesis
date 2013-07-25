@@ -1,0 +1,22 @@
+\chapter{Ausblick und Zusammenfassung}
+
+Entworfen und implementiert wurde ein erweiterbares Verfahren zum Lernen und Erkennen vielschichtiger dynamischer Zusammenhänge mehrerer Objekte im dreidimensionalen Raum mit jeweils eigenen Orientierungen.
+Das System fußt auf einer Erweiterung der auf der generalisierten Hough-Transformation\betterfootcite{ballard1981generalizing} basierenden Implicit Shape Models. 
+Es wendet sie nicht nur in drei Dimensionen an, sondern behandelt in der Rückprojektionsphase auch die Orientierungen der beteiligten Objekte, womit es nicht nur, wie in generischen Implicit Shape Models, einen Referenzpunkt einer Szene finden kann, sondern diesen Referenzpunkt als vollständige sechsdimensionale Pose erlernt und erkennt.
+
+Ebenfalls generiert das System auf Basis von Heuristiken eine Hierarchie aus Implicit Shape Models, welche es erlaubt, Fehlerkennungen klassischer ISMs zu beheben und gleichzeitig mehrere verschachtelte Beziehungen zwischen Objekten zu repräsentieren.
+Dadurch wird es im Gegensatz zu generischen ISMs möglich, Vertauschungen zwischen Objekten und ihre Orientierungen zueinander in einer Gesamtszene zu beschreiben und sogar als hilfreiche Zusatzinformation in Szenen zu benutzen.
+
+Die Evaluation hat gezeigt, dass das System auch nach langen Beobachtungszeiten von über 30 Minuten, mit 2450 gesehenen Einzelobjekten, die gelernten Szenen auf einem handelsüblichen Desktopcomputer in weniger als 15 Millisekunden erkennen konnte.
+Damit ist erwiesen, dass es für Soft-Realtime-Aufgaben sehr gut geeignet ist.
+
+Intensive Arbeit muss in Zukunft jedoch noch in die Ausarbeitung und Implementierung neuer Heuristiken für das Erkennen von dynamischen Zusammenhängen zwischen Objekten investiert werden, da die im Rahmen dieser Arbeit entwickelte Heuristik lediglich einige Basisfälle in häufig auftretenden Innenraumszenen mit der Beziehung "`B befindet sich immer an einer Seite von A"' behandelt.
+
+Darüber hinaus könnte eine Erweiterung des Aggregationsverfahrens von einem diskreten auf einen kontinuierlichen Raum, wie von \citeauthor{Leibe04combinedobject}\betterfootcite{Leibe04combinedobject} beschrieben, zu einer weiteren Verbesserung der Erkennung führen.
+
+Obwohl nicht unter den Anforderungen aufgeführt, erwies sich im Laufe der Ausarbeitung ein Online-Lernen als durchaus möglich und könnte das Potential des System enorm steigern, da es den Nutzern ein direktes Feedback bezüglich der gelernten Szene und des generierten Modells liefern kann.
+Online-Lernen würde es ermöglichen schon während der laufenden Aufzeichnung einer Szene vorläufige Erkennungsergebnisse zu erhalten.
+Diese könnten beispielsweise eingesetzt werden, um gezielt Situationen zu demonstrieren, die noch aufgrund von mangelnden Daten zu Fehlerkennungen führen.
+
+Des Weiteren wird sich die Leistung des Algorithmus für die Verarbeitung deutlich umfangreicherer Aufnahmen weiter steigern lassen, indem der Votingprozess, die Aggregation und die Rückprojektion ihre Arbeit auf mehrere Prozessorkerne verteilen.
+Dies ist besonders Vielversprechend, da ein großer Teil des Ablaufes, namentlich die Errechnung der Votes jeder Runde sowie die Auswertung einzelner Buckets, unabhängig voneinander und damit trivial parallelisierbar sind.

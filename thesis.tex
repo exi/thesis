@@ -1,0 +1,68 @@
+\documentclass{diplclass1}
+
+\newcommand{\myname}{Reno Reckling}
+\newcommand{\mytitle}{Szenenerkennung mittels hierarchischer Implicit Shape Models basierend auf räumlichen Objektrelationen für das Programmieren durch Vormachen}
+
+\hypersetup{
+ pdfauthor={\myname},
+ pdftitle={\mytitle},
+ pdfsubject={Not set},
+ pdfkeywords={Not set}
+}
+
+\bibliography{thesis}
+
+%% ---------------------------------
+%% | ToDo Marker - only for draft! |
+%% ---------------------------------
+% Remove this section for final version!
+\setlength{\marginparwidth}{20mm}
+
+\newcommand{\margtodo}
+{\marginpar{\textbf{\textcolor{red}{ToDo}}}{}}
+
+\newcommand{\todo}[1]
+{{\textbf{\textcolor{red}{(\margtodo{}#1)}}}{}}
+
+\begin{document}
+\frontmatter
+\pagenumbering{roman}
+\include{titelseite}
+\cleardoublepage
+\include{erklaerung}
+\cleardoublepage
+%%\include{danksagung}
+%%\cleardoublepage
+
+\tableofcontents
+\cleardoublepage
+
+%%\phantomsection
+%%\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+%%\include{00abkuerzungen}
+%%\cleardoublepage
+
+\mainmatter
+\pagenumbering{arabic}
+\newgeometry{top=2.5cm, bottom=3.5cm, left=4cm, right=3cm}
+%%\onehalfspacing
+\include{einleitung}
+\cleardoublepage
+\include{motivation}
+\cleardoublepage
+\include{grundlagen}
+\cleardoublepage
+\include{konzeption}
+\cleardoublepage
+\include{implementierung}
+\cleardoublepage
+\include{evaluation}
+\cleardoublepage
+\include{ausblickschluss}
+\cleardoublepage
+
+\phantomsection
+\addcontentsline{toc}{chapter}{\bibname}
+\printbibliography
+
+\end{document}
